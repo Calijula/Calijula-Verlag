@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pause vom Screen. Nicht vom Leben. | Calijula Verlag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #22364B; --navy-deep: #172736;
+    --sage: #7C9473; --sage-deep: #5C7452; --sage-hero: #445A3C;
+    --terracotta: #D97052; --terracotta-deep: #B85639;
+    --toc-1: #1E3A5C; --toc-2: #2CA58D; --toc-3: #3D6B96; --toc-4: #7C9A73; --toc-5: #C9A227; --toc-bonus: #D4726B;
+    --sand: #F6F1E6; --sand-card: #EFE6D4; --cream: #FBF8F1; --ink: #2B2822;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans', sans-serif; color:var(--ink); background:var(--sand); -webkit-font-smoothing:antialiased;}
+  .cal{font-family:'Alex Brush', cursive; font-weight:400;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px;}
+  a:focus-visible, button:focus-visible, summary:focus-visible{outline:2px solid var(--terracotta); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+  section[id]{scroll-margin-top:80px;}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(251,248,241,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(34,54,75,0.08);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1000px; margin:0 auto;}
+  .brandmark{display:flex; align-items:center; gap:12px;}
+  .logo-script{font-family:'Alex Brush', cursive; font-size:30px; line-height:1; color:var(--navy); position:relative; top:2px;}
+  .logo-sub{font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--terracotta-deep); position:relative; top:3px;}
+  .breadcrumb{font-size:13.5px; font-weight:500; color:var(--navy); display:none;}
+  @media (min-width:640px){ .breadcrumb{display:inline-flex; align-items:center; gap:6px;} }
+
+  .hero{background:var(--navy-deep); color:var(--cream); padding:70px 28px 96px; text-align:center; position:relative; overflow:hidden;}
+  .hero::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at 85% 12%, rgba(44,165,141,0.22), transparent 45%); pointer-events:none;}
+  .deco{position:absolute; pointer-events:none; opacity:0.45; color:rgba(251,248,241,0.9);}
+  .hero-inner{position:relative; max-width:700px; margin:0 auto;}
+  .pause-icon{width:220px; height:220px; border-radius:50%; background:var(--toc-2); display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 28px; box-shadow:0 20px 40px rgba(44,165,141,0.3);}
+  .pause-icon .bars{display:flex; gap:14px; margin-bottom:8px;}
+  .pause-icon .bars span{width:22px; height:70px; background:var(--navy-deep); border-radius:4px;}
+  .pause-icon .ptext{font-family:'Fraunces', serif; font-weight:700; font-size:15px; color:var(--navy-deep);}
+  .theme-badges{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:28px;}
+  .tbadge{font-size:12px; font-weight:700; padding:6px 14px; border-radius:6px; color:var(--navy-deep);}
+  .tbadge.kinder{background:var(--toc-2);}
+  .tbadge.teens{background:var(--toc-bonus); color:var(--cream);}
+  .tbadge.erwachsene{background:var(--toc-3); color:var(--cream);}
+  .tbadge.bildschirmzeit{background:var(--toc-5);}
+  .badge{display:inline-block; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:6px 14px; border-radius:14px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.25); margin-bottom:20px; transform:rotate(-1.5deg);}
+  .wave{display:block; width:100%; position:absolute; bottom:-1px; left:0;}
+  .hero h1{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(34px,5.5vw,50px); line-height:1.15; margin-bottom:20px;}
+  .hero p{font-size:17px; line-height:1.65; color:rgba(251,248,241,0.88); max-width:560px; margin:0 auto 30px;}
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{display:inline-block; padding:13px 26px; border-radius:3px; font-size:14.5px; font-weight:600; transition:transform .2s ease, box-shadow .2s ease;}
+  .btn-primary{background:var(--terracotta); color:var(--cream);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(217,112,82,0.3);}
+  .btn-ghost{border:1px solid rgba(251,248,241,0.4); color:var(--cream);}
+
+  .intro{padding:64px 0 8px;}
+  .intro-inner{max-width:680px; margin:0 auto;}
+  .intro h2{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(24px,3.4vw,30px); color:var(--navy); margin-bottom:20px; text-align:center;}
+  .intro p{font-size:16px; line-height:1.75; color:#4A4640; margin-bottom:16px;}
+  .intro p em{font-style:italic; color:var(--navy);}
+
+  .stats{padding:64px 0;}
+  .section-label{font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:var(--sage-deep); text-align:center; margin-bottom:8px;}
+  .section-title{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(24px,3.4vw,32px); color:var(--navy); text-align:center; margin-bottom:40px; max-width:600px; margin-left:auto; margin-right:auto;}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media (max-width:760px){ .stats-grid{grid-template-columns:1fr 1fr;} }
+  .stat{background:var(--cream); border:1px solid rgba(34,54,75,0.08); border-radius:10px; padding:26px 20px; text-align:center; transition:transform .25s ease;}
+  .stat:hover{transform:translateY(-3px) rotate(-0.5deg);}
+  .stat .num{font-family:'Fraunces', serif; font-weight:600; font-size:32px; color:var(--terracotta-deep); margin-bottom:6px;}
+  .stat .label{font-size:13px; font-weight:600; color:var(--navy); margin-bottom:6px;}
+  .stat .desc{font-size:12.5px; line-height:1.5; color:#7A7568;}
+
+  .audiences{padding:16px 0 64px;}
+  .aud-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:760px){ .aud-grid{grid-template-columns:1fr;} }
+  .aud{background:var(--sand-card); border-radius:8px; padding:28px 24px;}
+  .aud .emoji{font-size:26px; margin-bottom:12px;}
+  .aud h3{font-family:'Fraunces', serif; font-weight:600; font-size:18px; color:var(--navy); margin-bottom:8px;}
+  .aud p{font-size:14px; line-height:1.6; color:#4A4640;}
+
+  .chapters{padding:64px 0;}
+  .parts{max-width:760px; margin:0 auto;}
+  .part{margin-bottom:36px;}
+  .part-head{display:flex; align-items:center; gap:12px; margin-bottom:16px; padding:10px 16px; border-radius:6px;}
+  .part-num{font-family:'Fraunces', serif; font-weight:700; font-size:14px; color:var(--cream); flex-shrink:0;}
+  .part-name{font-family:'Fraunces', serif; font-weight:600; font-size:17px; color:var(--cream);}
+  .part-badge{font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--toc-5); background:rgba(255,255,255,0.85); padding:2px 8px; border-radius:10px; margin-left:auto;}
+  .part:nth-child(1) .part-head{background:var(--toc-1);}
+  .part:nth-child(2) .part-head{background:var(--toc-2);}
+  .part:nth-child(3) .part-head{background:var(--toc-3);}
+  .part:nth-child(4) .part-head{background:var(--toc-4);}
+  .part:nth-child(5) .part-head{background:var(--toc-5);}
+  .chap{display:flex; gap:16px; padding:12px 0; border-bottom:1px solid rgba(34,54,75,0.08);}
+  .chap:last-child{border-bottom:none;}
+  .cnum{font-family:'Fraunces', serif; font-weight:600; font-size:14px; color:var(--sage-deep); width:22px; flex-shrink:0;}
+  .ctext{font-size:14.5px; line-height:1.6; color:#4A4640;}
+  .ctext strong{color:var(--navy); font-weight:600;}
+  .cnew{font-size:10px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:var(--terracotta-deep); margin-left:6px;}
+
+  .highlight{background:var(--toc-1); color:var(--cream); border-radius:10px; padding:40px 36px; margin-top:12px;}
+  .highlight .hk{font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--toc-5); font-weight:700; margin-bottom:12px;}
+  .highlight h3{font-family:'Fraunces', serif; font-weight:600; font-size:22px; margin-bottom:16px;}
+  .highlight p{font-size:15px; line-height:1.7; color:rgba(251,248,241,0.85); margin-bottom:18px;}
+  .highlight ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .highlight li{font-size:14.5px; line-height:1.55; color:rgba(251,248,241,0.9); padding-left:20px; position:relative;}
+  .highlight li::before{content:'—'; position:absolute; left:0; color:var(--terracotta);}
+
+  .bonus{padding:64px 0;}
+  .bonus .section-label{color:var(--toc-bonus);}
+  .bonus-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media (max-width:760px){ .bonus-grid{grid-template-columns:1fr 1fr;} }
+  .bcard{background:var(--cream); border:1px solid rgba(34,54,75,0.08); border-radius:10px; padding:24px 20px; transition:transform .25s ease;}
+  .bcard:hover{transform:translateY(-3px) rotate(0.5deg);}
+  .bcard .emoji{font-size:22px; margin-bottom:10px;}
+  .bcard h4{font-family:'Fraunces', serif; font-weight:600; font-size:15px; color:var(--navy); margin-bottom:8px;}
+  .bcard p{font-size:13px; line-height:1.55; color:#6A6558;}
+
+  .pricing{background:var(--sage-hero); color:var(--cream); padding:72px 28px; text-align:center;}
+  .pricing-inner{max-width:560px; margin:0 auto;}
+  .pricing h2{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(26px,3.6vw,34px); margin-bottom:14px;}
+  .pricing > .pricing-inner > p{font-size:15.5px; line-height:1.6; color:rgba(251,248,241,0.85); margin-bottom:28px;}
+  .checklist{list-style:none; text-align:left; max-width:400px; margin:0 auto 32px; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{font-size:14.5px; line-height:1.5; color:rgba(251,248,241,0.92);}
+  .price-box{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:32px 28px; margin-bottom:20px;}
+  .price-old{font-size:15px; text-decoration:line-through; color:rgba(251,248,241,0.5); margin-bottom:4px;}
+  .price-new{font-family:'Fraunces', serif; font-weight:600; font-size:44px; margin-bottom:6px;}
+  .price-sub{font-size:13px; color:rgba(251,248,241,0.6); margin-bottom:22px;}
+  .secure{font-size:12.5px; color:rgba(251,248,241,0.55); margin-top:16px;}
+
+  .faq{padding:72px 0;}
+  .faq-list{max-width:680px; margin:36px auto 0;}
+  details{background:var(--cream); border:1px solid rgba(34,54,75,0.08); border-radius:8px; margin-bottom:12px; padding:18px 22px;}
+  summary{font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--navy); cursor:pointer; list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:'+'; float:right; color:var(--terracotta-deep); font-weight:700;}
+  details[open] summary::after{content:'−';}
+  details p{font-size:14.5px; line-height:1.65; color:#4A4640; margin-top:14px;}
+
+  footer{background:var(--navy-deep); color:rgba(251,248,241,0.65); padding:48px 28px 30px; text-align:center;}
+  footer .fname{font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--cream); margin-bottom:6px;}
+  footer p{font-size:13.5px; line-height:1.6; margin-bottom:18px;}
+  footer .fbottom{font-size:12.5px; color:rgba(251,248,241,0.4); border-top:1px solid rgba(251,248,241,0.1); padding-top:18px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="brandmark">
+      <span class="logo-script">Calijula</span>
+      <span class="logo-sub">Verlag</span>
+    </a>
+    <a href="/family-flow/" class="breadcrumb">← Family Flow</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="pause-icon">
+      <div class="bars"><span></span><span></span></div>
+      <div class="ptext">Pause vom Screen.</div>
+    </div>
+    <h1>Nicht vom Leben.</h1>
+    <p>Für Kinder, Teens und alle Erwachsenen, die mehr vom echten Leben wollen.</p>
+    <div class="theme-badges">
+      <span class="tbadge kinder">Kinder</span>
+      <span class="tbadge teens">Teens</span>
+      <span class="tbadge erwachsene">Erwachsene</span>
+      <span class="tbadge bildschirmzeit">Bildschirmzeit</span>
+    </div>
+    <p>Der wissenschaftlich fundierte Praxis-Guide für Kinder, Teens und Erwachsene – für mehr echtes Leben neben dem Bildschirm. Mit Familien-Plan, Belohnungstafeln, Schritt-für-Schritt-Vorlagen und digitalem Werkzeugkasten.</p>
+    <div class="hero-ctas">
+      <a href="#preis" class="btn btn-primary">Bald verfügbar – Sommer 2026</a>
+      <a href="#inhalt" class="btn btn-ghost">Inhalte ansehen</a>
+    </div>
+    <img src="/assets/family-flow-logo.png" alt="Calijula Family Flow Logo" style="width:64px; height:64px; object-fit:cover; border-radius:50%; background:var(--cream); box-shadow:0 8px 20px rgba(0,0,0,0.25); margin-top:36px;">
+  </div>
+  <svg class="wave" viewBox="0 0 1200 56" preserveAspectRatio="none" height="56">
+    <path d="M0,28 C150,56 350,0 600,28 C850,56 1050,0 1200,28 L1200,56 L0,56 Z" fill="var(--sand)"></path>
+  </svg>
+</section>
+
+<section class="intro">
+  <div class="wrap intro-inner">
+    <h2>Ein ehrliches Wort vorab: Ohne erhobenen Zeigefinger</h2>
+    <p>Lass uns ehrlich sein: Dieses Buch ist kein Anti-Technik-Manifest und möchte niemandem ein schlechtes Gewissen einreden. Unser Alltag ist digital, und es geht hier absolut nicht um pauschale Verbote oder darum, Bildschirme komplett aus dem Leben unserer Familien zu streichen.</p>
+    <p>Vielmehr schauen wir uns gemeinsam an, warum Apps und Spiele so eine enorme Anziehungskraft ausüben. Was mir selbst am meisten die Augen geöffnet hat, war zu verstehen, <em>warum</em> es Kindern heute eigentlich so unglaublich schwerfällt, sich ohne ein digitales Medium zu beschäftigen. Das liegt nämlich nicht daran, dass ihnen die Fantasie fehlt oder wir als Eltern versagt haben. Es hat einen ganz logischen Grund.</p>
+    <p>Das Buch erklärt dir diesen Mechanismus auf Augenhöhe. Und nur für den Fall, dass du das Gefühl hast, es wird im Alltag zu viel, reicht es dir die Hand: Du findest hier liebevolle und pragmatische Hilfestellungen, um das ganz normale, analoge Spielen wieder attraktiv zu machen und die Zeiten stressfrei zu reduzieren. Weniger Konflikte, mehr echtes Leben – und das alles ganz in eurem eigenen Tempo.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="section-label">Die Ausgangslage</div>
+    <div class="section-title">Bildschirmzeit ist kein Charakterproblem – sondern Biologie</div>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num">58–80×</div>
+        <div class="label">Handy-Entsperrungen</div>
+        <div class="desc">So oft greifen Erwachsene durchschnittlich pro Tag zum Smartphone – meist ohne bewusste Entscheidung.</div>
+      </div>
+      <div class="stat">
+        <div class="num">9–11h</div>
+        <div class="label">Bildschirmzeit bei Jugendlichen</div>
+        <div class="desc">Laut DAK-Studie verbringen Teens täglich diese Zeit vor Bildschirmen – ca. 70 % davon passiv.</div>
+      </div>
+      <div class="stat">
+        <div class="num">23 Min.</div>
+        <div class="label">Bis zur Ablenkung</div>
+        <div class="desc">So schnell verliert das Gehirn nach Fokusarbeit die Konzentration – durch eine einzige Benachrichtigung.</div>
+      </div>
+      <div class="stat">
+        <div class="num">~25</div>
+        <div class="label">Jahre bis zur Impulskontrolle</div>
+        <div class="desc">Erst dann ist der präfrontale Kortex vollständig entwickelt – bis dahin wirken Belohnungsreize 3× stärker.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audiences">
+  <div class="wrap aud-grid">
+    <div class="aud">
+      <div class="emoji">👨‍👩‍👧</div>
+      <h3>Für Eltern</h3>
+      <p>Ein gemeinsamer Familien-Medienplan statt täglicher Konflikte – altersgerecht, ohne schlechtes Gewissen.</p>
+    </div>
+    <div class="aud">
+      <div class="emoji">📱</div>
+      <h3>Für Kinder & Teens</h3>
+      <p>Verständliche Erklärungen, warum Apps so fesseln – und konkrete Ideen für ein Leben neben dem Screen.</p>
+    </div>
+    <div class="aud">
+      <div class="emoji">🧠</div>
+      <h3>Für Erwachsene</h3>
+      <p>Der eigene Screen-Reset: weniger Scrollen, mehr Fokus, bessere Erreichbarkeits-Strategien für den Alltag.</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapters" id="inhalt">
+  <div class="wrap">
+    <div class="section-label">Das erwartet dich</div>
+    <div class="section-title">15 Kapitel in 5 Teilen – verständlich, praxisnah, sofort umsetzbar</div>
+    <div class="parts" style="max-width:640px;">
+
+      <div class="part">
+        <div class="part-head"><span class="part-num">Teil 1</span><span class="part-name">Verstehen – Das Gehirn im Scroll-Modus</span></div>
+      </div>
+      <div class="part">
+        <div class="part-head"><span class="part-num">Teil 2</span><span class="part-name">Für dich selbst – weniger online</span></div>
+      </div>
+      <div class="part">
+        <div class="part-head"><span class="part-num">Teil 3</span><span class="part-name">Als Elternteil – Kinder und Teens begleiten</span></div>
+      </div>
+      <div class="part">
+        <div class="part-head"><span class="part-num">Teil 4</span><span class="part-name">Das echte Leben – Alternativen, die zählen</span></div>
+      </div>
+      <div class="part">
+        <div class="part-head"><span class="part-num">Teil 5</span><span class="part-name">Für Profis – Dein digitaler Werkzeugkasten</span><span class="part-badge">Neu</span></div>
+      </div>
+
+      <div class="highlight">
+        <div class="hk">Neu in Teil 5</div>
+        <h3>Dein digitaler SOS-Werkzeugkasten</h3>
+        <p>Zwei komplett neue Kapitel zeigen dir, wie digitale Kontrolle – vom Schul-Tablet bis zu den eigenen Familiengeräten – wirklich funktioniert, und wie du sie sinnvoll für euch einsetzt. Verständlich erklärt, ganz ohne IT-Vorwissen.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="bonus">
+  <div class="wrap">
+    <div class="section-label">Bonusmaterial</div>
+    <div class="section-title">Direkt zum Ausdrucken – für die ganze Familie</div>
+    <div class="bonus-grid">
+      <div class="bcard"><div class="emoji">📋</div><h4>Belohnungstafel</h4><p>Zum Ausdrucken und Abhaken.</p></div>
+      <div class="bcard"><div class="emoji">🏆</div><h4>Etappen-Plan</h4><p>Schritt für Schritt zum Ziel.</p></div>
+      <div class="bcard"><div class="emoji">📅</div><h4>30-Tage-Challenge</h4><p>Für eine neue Gewohnheit.</p></div>
+      <div class="bcard"><div class="emoji">📜</div><h4>Vorlagen</h4><p>Fertig zum Loslegen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="preis">
+  <div class="pricing-inner">
+    <h2>Hol dir den kompletten Guide</h2>
+    <p>Sofort als PDF herunterladen – lesbar auf Smartphone, Tablet, E-Reader oder am PC. Einmal kaufen, für immer behalten.</p>
+    <ul class="checklist">
+      <li>✓ 15 Kapitel in 5 Teilen, vollgepackt mit Praxiswissen</li>
+      <li>✓ Wissenschaftlich fundiert, alltagsnah erklärt</li>
+      <li>✓ Belohnungstafel, Challenge, 30-Tage-Plan & Beschäftigungsvorlagen</li>
+      <li>✓ Digitaler Werkzeugkasten mit Schritt-für-Schritt-Anleitung</li>
+      <li>✓ Sofortiger Download nach dem Kauf</li>
+    </ul>
+    <div class="price-box">
+      <div class="price-old">statt 29,90 €</div>
+      <div class="price-new">17,90 €</div>
+      <div class="price-sub">Einmalzahlung · sofortiger PDF-Download</div>
+      <span class="btn btn-primary" style="opacity:0.6; cursor:default; pointer-events:none;">Bald verfügbar</span>
+    </div>
+    <div class="secure">🕐 Voraussichtlich ab Sommer 2026 · Zahlung über Digistore24</div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label">Häufige Fragen</div>
+    <div class="section-title">Noch Fragen?</div>
+    <div class="faq-list">
+      <details>
+        <summary>In welchem Format erhalte ich das eBook?</summary>
+        <p>Als PDF-Datei – optimiert für Smartphone, Tablet, E-Reader und Desktop. Sofort nach dem Kauf zum Download verfügbar.</p>
+      </details>
+      <details>
+        <summary>Für welches Alter ist der Ratgeber geeignet?</summary>
+        <p>Das eBook richtet sich an Eltern von Kindern und Teens jeden Alters sowie an Erwachsene, die ihren eigenen Umgang mit dem Smartphone verbessern möchten. Die Bonusmaterialien sind nach Altersgruppen gegliedert.</p>
+      </details>
+      <details>
+        <summary>Brauche ich technisches Vorwissen für die Kapitel zum digitalen Werkzeugkasten?</summary>
+        <p>Nein. Alles wird in einfachen Schritten erklärt, ganz ohne IT-Erfahrung.</p>
+      </details>
+      <details>
+        <summary>Wie erfolgt die Bezahlung?</summary>
+        <p>Die Bestellung läuft sicher über Digistore24 – mit allen gängigen Zahlungsmethoden wie PayPal, Kreditkarte oder Sofortüberweisung.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fname"><span class="cal" style="font-size:1.3em;">Calijula</span> Verlag</div>
+  <p>Pause vom Screen. Nicht vom Leben.<br>Für Kinder, Teens und alle Erwachsenen, die mehr vom echten Leben wollen.</p>
+  <div class="fbottom">© 2026 Calijula Verlag · Vertrieb über Digistore24</div>
+</footer>
+
+</body>
+</html>

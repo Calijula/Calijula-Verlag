@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calijula Kids: Die Hasi-Reihe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #22364B;
+    --navy-deep: #172736;
+    --sage: #7C9473;
+    --sage-deep: #5C7452;
+    --terracotta: #D97052;
+    --terracotta-deep: #B85639;
+    --k-blue: #7E9AAC;
+    --k-blue-deep: #3F5C6E;
+    --k-mustard: #E0A94A;
+    --sand: #F6F1E6;
+    --sand-card: #EFE6D4;
+    --cream: #FBF8F1;
+    --ink: #2B2822;
+    
+    /* Instagram Palette */
+    --ig-top: #0D8C90;
+    --ig-mid: #33A874;
+    --ig-bot: #48B558;
+    --ig-yellow: #FFEA20;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans', sans-serif; color:var(--ink); background:var(--sand); -webkit-font-smoothing:antialiased;}
+  .display{font-family:'Fraunces', serif;}
+  .cal{font-family:'Dancing Script', cursive; font-weight:700;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--ig-yellow); outline-offset:3px;}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* HEADER */
+  header{position:sticky; top:0; z-index:50; background:rgba(251,248,241,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(34,54,75,0.08);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px;}
+  .brandmark{display:flex; align-items:center; gap:12px;}
+  .logo-script{font-family:'Dancing Script', cursive; font-weight:700; font-size:32px; line-height:1; color:var(--navy); position:relative; top:2px;}
+  .logo-sub{font-family:'Work Sans', sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--k-blue-deep); position:relative; top:3px;}
+  nav ul{list-style:none; display:flex; gap:34px;}
+  nav ul a{font-size:14.5px; font-weight:500; color:var(--navy); position:relative; padding-bottom:3px;}
+  nav ul a.active{color:var(--k-blue-deep);}
+  nav ul a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--k-mustard); transition:width .25s ease;}
+  nav ul a:hover::after{width:100%;}
+  .navlinks{display:flex;}
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* HERO */
+  .hero{background:var(--ig-top); color:var(--cream); padding:80px 28px 50px; position:relative; overflow:hidden;}
+  .hero::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at 12% 15%, rgba(255,255,255,0.06), transparent 45%), radial-gradient(circle at 88% 85%, rgba(0,0,0,0.08), transparent 45%); pointer-events:none;}
+  .deco{position:absolute; pointer-events:none; opacity:0.35; color:var(--cream);}
+  .hero-inner{position:relative; max-width:720px; margin:0 auto; text-align:center;}
+  .breadcrumb{font-size:13.5px; font-weight:500; color:rgba(255,255,255,0.6); margin-bottom:26px; display:inline-flex; align-items:center; gap:6px;}
+  .breadcrumb:hover{color:var(--cream);}
+  .eyebrow{font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ig-yellow); margin-bottom:18px; font-weight:600;}
+  .hero h1{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(38px, 6vw, 58px); line-height:1.1; margin-bottom:20px; color:var(--cream);}
+  .hero h1 .cal{font-size:1.25em; display:block; margin-bottom:2px; color:var(--cream);}
+  .hero p{font-size:17.5px; line-height:1.65; color:rgba(255,255,255,0.9); max-width:520px; margin:0 auto;}
+
+  /* INSTAGRAM STORY BEREICH - Sanfter Verlauf */
+  .ig-story {
+    background: linear-gradient(180deg, var(--ig-top) 0%, var(--ig-mid) 50%, var(--ig-bot) 100%);
+    padding: 30px 0 70px;
+    position: relative;
+    overflow: hidden;
+    color: var(--navy-deep);
+  }
+  
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    position: relative;
+    z-index: 5;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  @media (max-width: 860px) {
+    .ig-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* DIE AUFPLOPPENDEN KARTEN */
+  .ig-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 36px 24px;
+    backdrop-filter: blur(4px);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, background 0.35s ease;
+    cursor: default;
+    position: relative;
+  }
+  
+  /* Der Aufplopp-Effekt beim Darüberschweben */
+  .ig-col:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Der originale Canva-Look für den "WARUM"-Marker */
+  .ig-badge {
+    background: #FFEA20;
+    color: #172736;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(20px, 2.2vw, 23px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 18px 10px;
+    border-radius: 6px;
+    border: 2.5px solid #172736;
+    box-shadow: 3px 3px 0 rgba(23,39,54,0.4);
+    transform: rotate(-3deg);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .ig-col:nth-child(2) .ig-badge { transform: rotate(2deg); }
+  .ig-col:nth-child(3) .ig-badge { transform: rotate(-1.5deg); }
+
+  .ig-col p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    font-weight: 600;
+    color: var(--navy-deep);
+    margin-bottom: 14px;
+  }
+  .ig-col p.lead-q {
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Verspielte Doodles */
+  .doodle {
+    position: absolute;
+    font-size: 38px;
+    opacity: 0.8;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    color: var(--navy-deep);
+    animation: float 6s ease-in-out infinite;
+  }
+  .d-q1 { top: 10%; left: 3%; transform: rotate(-15deg); }
+  .d-q2 { bottom: 10%; left: 10%; transform: rotate(10deg); font-size: 45px; animation-delay: 1s; }
+  .d-q3 { top: 20%; right: 3%; transform: rotate(20deg); animation-delay: 2s; }
+  .d-sparkle { top: 5%; right: 15%; font-size: 40px; animation-delay: 1.5s; color: var(--cream); }
+  .d-bubble { bottom: 5%; right: 10%; font-size: 50px; animation-delay: 0.5s; color: var(--cream); }
+  .d-wave { top: 5%; left: 25%; color: #D9534F; font-weight: bold; font-size: 26px; letter-spacing: -4px; transform: rotate(15deg); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-12px) rotate(4deg); }
+  }
+
+  @media (max-width: 860px) {
+    .d-q1 { top: 2%; left: 2%; }
+    .d-q2 { bottom: 2%; left: 5%; }
+    .d-q3 { top: 5%; right: 5%; }
+    .d-sparkle { top: 15%; right: 5%; left: auto; }
+    .d-bubble { bottom: 2%; right: 2%; }
+  }
+
+  /* SERIES */
+  .series{background: #3B9C68; padding:50px 0 100px;}
+  .section-label{font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:var(--cream); margin-bottom:8px; text-align:center; opacity:0.85;}
+  .series-title{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(24px,3.4vw,32px); color:var(--cream); text-align:center; margin-bottom:56px;}
+
+  .series-list{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:24px;}
+  
+  .series-item{
+    display:flex; gap:26px; padding:32px 28px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:16px;
+    position:relative; transition:transform .25s ease, background .25s ease;
+  }
+  .series-item:hover{transform:translateY(-4px) rotate(-0.5deg); background:rgba(255,255,255,0.18);}
+  
+  .bignum{position:absolute; right:16px; top:12px; font-family:'Fraunces', serif; font-weight:600; font-size:64px; color:rgba(255,255,255,0.15); line-height:1; user-select:none;}
+  .snum{
+    font-family:'Fraunces', serif; font-weight:600; font-size:15px; color:var(--navy-deep);
+    background:var(--ig-yellow); width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 4px 10px rgba(255, 234, 32, 0.3);
+  }
+  .scontent{flex-grow:1; position:relative;}
+  .sbadge{display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:4px 12px; border-radius:6px; margin-bottom:10px; transform:rotate(-2deg); box-shadow:0 3px 8px rgba(0,0,0,0.08);}
+  .sbadge.live{background:var(--ig-yellow); color:var(--navy-deep);}
+  .sbadge.pending{background:rgba(255,255,255,0.2); color:var(--cream); box-shadow:none; transform:rotate(2deg);}
+  .scontent h3{font-family:'Fraunces', serif; font-weight:600; font-size:21px; color:var(--cream); margin-bottom:8px; line-height:1.3;}
+  
+  /* Der originale Canva-Look für den "WARUM"-Marker in der Liste */
+  .warum{
+    display:inline-block; font-family:'Work Sans', sans-serif; font-weight:800; font-style:normal;
+    background:#FFEA20; color:#172736; padding:2px 10px 4px; border-radius:6px;
+    border:2.5px solid #172736; box-shadow:3px 3px 0 rgba(23,39,54,0.4);
+    transform:rotate(-2.5deg); font-size:0.92em; letter-spacing:0.02em; margin-right:6px;
+    position:relative; top:-1px;
+  }
+  
+  .scontent p{font-size:15px; line-height:1.65; color:rgba(255,255,255,0.9); margin-bottom:14px;}
+  .splink{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:600; color:var(--ig-yellow); border-bottom:1px solid var(--ig-yellow); padding-bottom:2px;}
+  .splink .arrow{transition:transform .2s ease;}
+  .series-item:hover .splink .arrow{transform:translateX(3px);}
+
+  .series-item.pending {
+    background:rgba(0,0,0,0.08); 
+    border:1px solid rgba(0,0,0,0.05);
+    box-shadow:none;
+  }
+  .series-item.pending:hover { transform:none; background:rgba(0,0,0,0.08); }
+  .series-item.pending .snum { background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); box-shadow:none; }
+
+  /* FOOTER */
+  footer{background:var(--navy-deep); color:rgba(251,248,241,0.75); padding:56px 28px 34px;}
+  .footer-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:40px;}
+  .footer-col h4{font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(251,248,241,0.5); margin-bottom:14px; font-weight:600;}
+  .footer-col ul{list-style:none;}
+  .footer-col li{margin-bottom:9px; font-size:14.5px;}
+  .footer-col a:hover{color:var(--ig-yellow);}
+  .footer-bottom{border-top:1px solid rgba(251,248,241,0.12); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:13px; color:rgba(251,248,241,0.45);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="/" class="brandmark">
+      <span class="logo-script">Calijula</span>
+      <span class="logo-sub">Verlag</span>
+    </a>
+    <div class="navlinks">
+      <ul>
+        <li><a href="/#geschichte">Meine Geschichte</a></li>
+        <li><a href="/family-flow/">Family Flow</a></li>
+        <li><a href="/kids/" class="active">Kids</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="deco" style="top:60px; left:8%; font-size:22px; transform:rotate(-8deg);">★</div>
+  <div class="deco" style="top:120px; right:12%; font-size:16px; transform:rotate(12deg);">✦</div>
+  <div class="deco" style="bottom:40px; left:16%; font-size:14px;">●</div>
+  <div class="deco" style="top:90px; right:22%; font-size:10px;">●</div>
+  <div class="deco" style="bottom:70px; right:8%; font-size:20px; transform:rotate(-15deg);">✦</div>
+  <div class="hero-inner">
+    <a href="/" class="breadcrumb">← Zur Startseite</a>
+    <img src="/assets/kids-logo-cutout-tight.png" alt="Calijula Kids Logo" style="width:220px; max-width:85%; height:auto; margin:0 auto 12px; display:block; filter:drop-shadow(0 12px 24px rgba(0,0,0,0.15));">
+    <h1 class="sr-only">Calijula Kids</h1>
+    <div class="eyebrow">Für Kinder</div>
+    <p>Bilderbücher, die Kindern helfen, sich selbst und ihren Platz in der Familie besser zu verstehen. Liebevoll, einfühlsam, zum Immer-wieder-Vorlesen.</p>
+  </div>
+</section>
+
+<!-- INSTAGRAM-STYLE BEREICH MIT AUFPLOPP-EFFEKT -->
+<section class="ig-story">
+  <!-- Schwebende Doodles -->
+  <div class="doodle d-q1">❓</div>
+  <div class="doodle d-q2">❓</div>
+  <div class="doodle d-q3">❓</div>
+  <div class="doodle d-sparkle">✨</div>
+  <div class="doodle d-bubble">💭</div>
+  <div class="doodle d-wave">〰️〰️</div>
+
+  <div class="ig-grid">
+    
+    <div class="ig-col">
+      <div class="ig-badge">Warum</div>
+      <p class="lead-q">wurde das Hasi-Buch geschrieben?</p>
+      <p>Kennst du das auch?</p>
+      <p>Dein Erstklässler soll täglich lesen üben, aber ihn motiviert kein Buch so wirklich?</p>
+    </div>
+
+    <div class="ig-col">
+      <div class="ig-badge">Die Mission</div>
+      <p>Genau deshalb habe ich angefangen, das erste Hasi-Buch zu schreiben. :)</p>
+      <p>Ich wollte Geschichten schaffen, die Kinder nicht als Pflichtprogramm sehen, sondern als ein echtes Abenteuer.</p>
+    </div>
+
+    <div class="ig-col">
+      <div class="ig-badge">Echte Kinderfragen</div>
+      <p>Im Buch stecken wahre Geschichten & echte Kinderfragen, die kindgerecht aus der Sicht eines Kuscheltieres erzählt werden.</p>
+      <p>Das weckt die natürliche Neugier und die echte Leselust!</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="series">
+  <div class="wrap">
+    <div class="section-label">Die Hasi-Reihe</div>
+    <div class="series-title">Noah und Hasi: drei Teile, eine Freundschaft</div>
+
+    <div class="series-list">
+
+      <div class="series-item">
+        <div class="snum">1</div>
+        <div class="scontent">
+          <div class="bignum">01</div>
+          <div class="sbadge live">Jetzt erhältlich</div>
+          <h3><span class="warum">Warum</span> heiße ich eigentlich Hasi?</h3>
+          <p>Das Kuscheltier, das wissen wollte, woher sein Name kommt. Eine warmherzige Geschichte über Spitznamen, Zugehörigkeit und die vielen kleinen Dinge, die eine Familie so besonders machen.</p>
+          <a href="https://www.amazon.de/Warum-hei%C3%9Fe-ich-eigentlich-Hasi/dp/B0H12WZFCS" class="splink">Bei Amazon ansehen <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="series-item pending">
+        <div class="snum">2</div>
+        <div class="scontent">
+          <div class="bignum">02</div>
+          <div class="sbadge pending">In Arbeit</div>
+          <h3><span class="warum">Warum</span> heiße ich eigentlich Noah?</h3>
+          <p>Die Geschichte von Noah und Hasi geht weiter. Mehr dazu verrate ich dir hier, sobald es so weit ist!</p>
+        </div>
+      </div>
+
+      <div class="series-item pending">
+        <div class="snum">3</div>
+        <div class="scontent">
+          <div class="bignum">03</div>
+          <div class="sbadge pending">In Arbeit</div>
+          <h3><span class="warum">Warum</span> spielst du nicht mehr mit mir?</h3>
+          <p>Große Veränderungen lösen große Gefühle aus – bald erfährst du mehr!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brandmark" style="margin-bottom:14px; display:flex;">
+          <span class="logo-script" style="color:var(--cream);">Calijula</span>
+          <span class="logo-sub" style="color:rgba(251,248,241,0.6);">Verlag</span>
+        </a>
+        <p style="max-width:280px; font-size:14px; line-height:1.6; color:rgba(251,248,241,0.55); margin-top:14px;">
+          Geschichten und Ideen für mehr echte Familienzeit.<br><br>
+          <a href="https://www.instagram.com/calijula_kids_hasi_buch?igsi=MW04c2czYWE4MWY2Yw==" target="_blank" style="color:var(--ig-yellow); font-weight:600;">@calijula_kids_hasi_buch auf Instagram</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Reihen</h4>
+        <ul>
+          <li><a href="/family-flow/">Calijula Family Flow</a></li>
+          <li><a href="/kids/">Calijula Kids</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verlag</h4>
+        <ul>
+          <li><a href="/#geschichte">Unsere Geschichte</a></li>
+          <li><a href="/impressum/">Impressum</a></li>
+          <li><a href="/datenschutz/">Datenschutz</a></li>
+          <li><a href="mailto:calijula-verlag@web.de">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Calijula Verlag</span>
+      <span>calijula.de</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

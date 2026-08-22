@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calijula Verlag: Zwei Reihen, eine Haltung.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #22364B;
+    --navy-deep: #172736;
+    --sage: #7C9473;
+    --sage-deep: #5C7452;
+    --terracotta: #D97052;
+    --terracotta-deep: #B85639;
+    --k-blush: #F0DBC3;
+    --k-blue: #7E9AAC;
+    --k-blue-deep: #3F5C6E;
+    --k-mustard: #E0A94A;
+    --ff-teal-deep: #2E7E86;
+    --dusk-blue: #E7EEF0;
+    --toc-2: #2CA58D;
+    --q-green: #2E9E52;
+    --q-gold: #F5C518; --q-gold-ink: #4A3800;
+    --sand: #F6F1E6;
+    --sand-card: #EFE6D4;
+    --cream: #FBF8F1;
+    --ink: #2B2822;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .cal{font-family:'Dancing Script', cursive; font-weight:700;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--terracotta); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,241,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(34,54,75,0.08);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px;}
+  .brandmark{display:flex; align-items:center; gap:12px;}
+  .seal{
+    width:38px; height:38px; border-radius:50%;
+    border:1.5px solid var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-size:14px; font-weight:600; color:var(--navy);
+    flex-shrink:0;
+  }
+  .brand-word{font-family:'Fraunces', serif; font-weight:600; font-size:19px; letter-spacing:0.01em; color:var(--navy);}
+  .brand-word span{font-style:italic; font-weight:500; color:var(--terracotta-deep);}
+  .logo-script{font-family:'Dancing Script', cursive; font-weight:700; font-size:32px; line-height:1; color:var(--navy); position:relative; top:2px;}
+  .logo-sub{font-family:'Work Sans', sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--terracotta-deep); position:relative; top:3px;}
+  nav ul{list-style:none; display:flex; gap:34px;}
+  nav ul a{font-size:14.5px; font-weight:500; color:var(--navy); position:relative; padding-bottom:3px;}
+  nav ul a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px;
+    background:var(--terracotta); transition:width .25s ease;
+  }
+  nav ul a:hover::after{width:100%;}
+  .navlinks{display:flex;}
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--dusk-blue);
+    color:var(--navy);
+    padding:80px 28px 70px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(46,126,134,0.14), transparent 45%),
+      radial-gradient(circle at 82% 78%, rgba(63,92,110,0.14), transparent 45%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:720px; margin:0 auto;}
+  .deco{position:absolute; pointer-events:none; opacity:0.55; color:rgba(34,54,75,0.55);}
+  .eyebrow{
+    font-size:13px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--ff-teal-deep); margin-bottom:20px; font-weight:600;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif; font-weight:500; font-size:clamp(40px, 7vw, 64px);
+    line-height:1.05; margin-bottom:22px; letter-spacing:-0.01em; color:var(--navy);
+  }
+  .hero h1 em{font-style:italic; color:var(--ff-teal-deep); font-weight:500;}
+  .hero p{font-size:18px; line-height:1.6; color:#5A5245; max-width:520px; margin:0 auto;}
+
+  /* ===== INTERACTIVE SPLIT (HOVER ACCORDION) ===== */
+  .interactive-split {
+    display: flex;
+    width: 100%;
+    min-height: 85vh;
+    overflow: hidden;
+    align-items: stretch;
+  }
+  
+  .islane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Verankert den Inhalt fest oben */
+    align-items: center;
+    padding: 80px 3vw 60px;
+    transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .islane.family { background: var(--ff-teal-deep); color: var(--cream); }
+  .islane.kids { background: var(--k-blue-deep); color: var(--cream); }
+
+  @media (min-width: 961px) {
+    .interactive-split:hover .islane:not(:hover) {
+      filter: brightness(0.85) grayscale(0.2);
+    }
+    .islane:hover {
+      flex: 2.2;
+      cursor: default;
+    }
+  }
+
+  .is-header {
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.6s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media (min-width: 961px) {
+    .islane:hover .is-header {
+      transform: translateY(-20px);
+    }
+  }
+
+  .lane-eyebrow{font-size:16px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.8; margin-bottom:20px; font-weight:600;}
+  
+  .is-logo { 
+    width: 200px; 
+    min-height: 60px; 
+    height: auto; 
+    margin: 0 auto 28px; 
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2)); 
+    transition: transform 0.5s ease; 
+  }
+  .islane:hover .is-logo { transform: scale(1.05); }
+
+  .is-lead { font-size: 16px; line-height: 1.65; opacity: 0.94; margin-bottom: 24px; text-align: center;}
+  
+  .is-explore-hint {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .is-explore-hint .down-arrow { animation: bounce 2s infinite; }
+  @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
+  
+  @media (min-width: 961px) {
+    .islane:hover .is-explore-hint { opacity: 0; pointer-events: none; }
+  }
+
+  .is-content {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, transform 0.5s ease, margin-top 0.4s ease;
+    overflow: hidden;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    width: 100%;
+  }
+  
+  @media (min-width: 961px) {
+    .islane:hover .is-content {
+      max-height: 1200px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 30px;
+      pointer-events: auto;
+      overflow: visible;
+    }
+  }
+
+  .is-cards {
+    display: flex; 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 900px; 
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* MOBILE FALLBACK (Klick zum Ausklappen statt Hover) */
+  @media (max-width: 960px) {
+    .interactive-split { flex-direction: column; min-height: auto; }
+    .islane { padding: 60px 20px; }
+    .is-content { transform: none; }
+    .islane.mobile-active .is-content { 
+      max-height: 1500px; 
+      opacity: 1; 
+      margin-top: 30px; 
+      pointer-events: auto; 
+      overflow: visible; 
+    }
+    .islane.mobile-active .is-explore-hint { display: none; }
+    .is-cards { flex-direction: column; align-items: center; }
+  }
+
+  /* ===== PRODUKTKARTEN STYLING (mit Pause/Play Animation) ===== */
+  .product-card{
+    flex: 1; min-width: 280px; max-width: 420px;
+    display:flex; flex-direction:column; position:relative; overflow:hidden; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22);
+    border-radius:10px; padding:24px 26px; margin-bottom:16px; text-align: left;
+    transition:background .2s ease, transform .25s ease;
+  }
+  .product-card:hover{background:rgba(255,255,255,0.19); transform:translateY(-3px) rotate(-0.6deg);}
+  .product-card.pc-pause{background:rgba(44,165,141,0.22); border-color:rgba(44,165,141,0.4);}
+  .product-card.pc-pause:hover{background:rgba(44,165,141,0.32);}
+  .product-card.pc-sos{background:rgba(46,158,82,0.22); border-color:rgba(46,158,82,0.4);}
+  .product-card.pc-sos:hover{background:rgba(46,158,82,0.32);}
+  .product-card.pc-hasi{background:rgba(224,169,74,0.22); border-color:rgba(224,169,74,0.4);}
+  .product-card.pc-hasi:hover{background:rgba(224,169,74,0.32);}
+  
+  .product-card .ptitle{position:relative; font-family:'Fraunces', serif; font-weight:600; font-size:21px; margin-bottom:10px; color:var(--cream); line-height:1.2; z-index:2;}
+  .product-card .pdesc{position:relative; font-size:14.5px; line-height:1.6; opacity:0.95; margin-bottom:20px; color:var(--cream); z-index:2; flex-grow:1;}
+  .product-card .plink{
+    position:relative; font-size:14px; font-weight:600; display:inline-flex; align-items:center; gap:6px; color:var(--cream);
+    border-bottom:1px solid rgba(255,255,255,0.5); padding-bottom:2px; width:fit-content; z-index:2;
+  }
+  .product-card .plink .arrow{transition:transform .2s ease;}
+  .product-card:hover .plink .arrow{transform:translateX(3px);}
+
+  /* Pause-Play Animation */
+  .pc-deco{position:absolute; pointer-events:none; z-index:1;}
+  .pause-deco{top:50%; right:24px; transform:translateY(-50%); display:flex; gap:12px; align-items:center; justify-content:center;}
+  .pause-deco span{width:22px; height:80px; background:var(--navy-deep); opacity:0.3; border-radius:5px; transition:all 0.3s ease;}
+  .pause-deco::after{
+    content:''; position:absolute; left:50%; top:50%;
+    border-top:40px solid transparent; border-bottom:40px solid transparent; border-left:60px solid var(--navy-deep);
+    opacity:0; transform:translate(-42%, -50%) scale(0.5); transition:all 0.3s ease;
+  }
+  .product-card.pc-pause:hover .pause-deco span{opacity:0; transform:scale(0.5);}
+  .product-card.pc-pause:hover .pause-deco::after{opacity:0.25; transform:translate(-42%, -50%) scale(1);}
+
+  .sos-big, .sos-letter{font-size:1.3em; letter-spacing:0.02em;}
+  .pause-big{font-size:1.3em; letter-spacing:0.02em;}
+  .pause-navy{color:var(--navy-deep);}
+  .play-mini{display:inline-block; width:0; height:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:8px solid currentColor; margin-right:2px;}
+  .xp-badge{display:inline-block; vertical-align:middle; font-size:10px; font-weight:800; letter-spacing:0.02em; color:var(--q-gold-ink); background:var(--q-gold); padding:2px 8px; border-radius:6px; margin-left:6px; transform:rotate(-1.5deg);}
+  .sos-letter{display:inline-block; color:var(--cream); animation:cardLetterGlow 4s infinite;}
+  .sl-a{animation-delay:0s;}
+  .sl-b{animation-delay:.96s;}
+  .sl-c{animation-delay:1.92s;}
+  @keyframes cardLetterGlow{
+    0%{color:var(--cream);}
+    5%{color:var(--q-gold);}
+    28%{color:var(--q-gold);}
+    34%{color:var(--cream);}
+    100%{color:var(--cream);}
+  }
+  .morse-deco{bottom:14px; right:18px; display:flex; align-items:center; gap:5px;}
+  .md{opacity:0.3; background:var(--q-gold); animation:mdBlip 4s infinite;}
+  .md.dot{width:5px; height:5px; border-radius:50%;}
+  .md.dash{width:14px; height:5px; border-radius:3px;}
+  .md:nth-child(1){animation-delay:0s;}
+  .md:nth-child(2){animation-delay:.28s;}
+  .md:nth-child(3){animation-delay:.56s;}
+  .md:nth-child(4){animation-delay:.96s;}
+  .md:nth-child(5){animation-delay:1.24s;}
+  .md:nth-child(6){animation-delay:1.52s;}
+  .md:nth-child(7){animation-delay:1.92s;}
+  .md:nth-child(8){animation-delay:2.2s;}
+  .md:nth-child(9){animation-delay:2.48s;}
+  @keyframes mdBlip{0%{opacity:.3;} 6%{opacity:1;} 16%{opacity:.3;} 100%{opacity:.3;}}
+  
+  .lane-footlink{margin-top:20px; font-size:14.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid rgba(255,255,255,0.5); padding-bottom:2px; color:var(--cream);}
+
+  /* ===== STORY ===== */
+  .story{padding:100px 0 90px;}
+  .story-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;}
+  @media (max-width:820px){ .story-grid{grid-template-columns:1fr; gap:36px;} }
+  .story-label{
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;
+    color:var(--sage-deep); margin-bottom:14px;
+  }
+  .story h2{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(28px,4vw,38px); line-height:1.15; color:var(--navy);}
+  .story h2 .cal{font-size:1.35em;}
+  .story-text p{font-size:16.5px; line-height:1.75; color:#4A4640; margin-bottom:18px;}
+  .story-text p:last-child{margin-bottom:0;}
+  .story-text strong{color:var(--navy); font-weight:600;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy-deep); color:rgba(251,248,241,0.75); padding:56px 28px 34px;}
+  .footer-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:40px;}
+  .footer-brand .brand-word{color:var(--cream);}
+  .footer-brand .seal{border-color:rgba(251,248,241,0.5); color:var(--cream);}
+  .footer-col h4{font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(251,248,241,0.5); margin-bottom:14px; font-weight:600;}
+  .footer-col ul{list-style:none;}
+  .footer-col li{margin-bottom:9px; font-size:14.5px;}
+  .footer-col a:hover{color:var(--terracotta);}
+  .footer-bottom{
+    border-top:1px solid rgba(251,248,241,0.12); padding-top:22px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:13px; color:rgba(251,248,241,0.45);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="/" class="brandmark">
+      <span class="logo-script">Calijula</span>
+      <span class="logo-sub">Verlag</span>
+    </a>
+    <div class="navlinks">
+      <ul>
+        <li><a href="#geschichte">Meine Geschichte</a></li>
+        <li><a href="/family-flow/">Family Flow</a></li>
+        <li><a href="/kids/">Kids</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="deco" style="top:70px; left:9%; font-size:20px; transform:rotate(-10deg);">★</div>
+  <div class="deco" style="top:130px; right:14%; font-size:15px; transform:rotate(15deg);">✦</div>
+  <div class="deco" style="bottom:50px; left:18%; font-size:13px;">●</div>
+  <div class="deco" style="top:100px; right:24%; font-size:9px;">●</div>
+  <div class="deco" style="bottom:80px; right:10%; font-size:18px; transform:rotate(-12deg);">✦</div>
+  <div class="hero-inner">
+    <div class="eyebrow">Calijula Verlag</div>
+    <h1>Geschichten und Ideen<br>für <em>echte</em> Familienzeit.</h1>
+    <p>Ein kleiner Verlag, zwei große Leidenschaften: Praktische Impulse für deinen Familienalltag mit weniger Bildschirm und liebevolle Bilderbücher, die Kindern zeigen, wer sie sind.</p>
+  </div>
+</section>
+
+<!-- INTERACTIVE ACCORDION SPLIT -->
+<section class="interactive-split">
+  
+  <!-- LANE: FAMILY FLOW -->
+  <div class="islane family" onclick="toggleMobileLane(this)">
+    <div class="is-header">
+      <div class="lane-eyebrow">Für Eltern</div>
+      <img src="/assets/family-flow-logo-cutout-tight.png" alt="Calijula Family Flow" class="is-logo">
+      <p class="is-lead">Sofort einsetzbare Ideen und Werkzeuge für Familien, die bewusster mit Bildschirmzeit umgehen wollen, ganz ohne Streit oder schlechtes Gewissen.</p>
+      <div class="is-explore-hint">Angebote entdecken <span class="down-arrow">↓</span></div>
+    </div>
+    
+    <div class="is-content">
+      <div class="is-cards">
+        <a href="/family-flow/pause-vom-screen/" class="product-card pc-pause">
+          <div class="pc-deco pause-deco" aria-hidden="true"><span></span><span></span></div>
+          <div class="ptitle"><span class="pause-navy"><span class="pause-big">Pause</span> vom Screen.</span><br>Nicht vom Leben.</div>
+          <div class="pdesc">E-Book mit konkreten Strategien gegen die Erreichbarkeitsfalle: von Familienregeln bis zur passenden Kindersicherung.</div>
+          <span class="plink"><span class="play-mini"></span>Zum eBook <span class="arrow">→</span></span>
+        </a>
+
+        <a href="/family-flow/sos-ferienquests/" class="product-card pc-sos">
+          <div class="pc-deco morse-deco" aria-hidden="true">
+            <span class="md dot"></span><span class="md dot"></span><span class="md dot"></span>
+            <span class="md dash"></span><span class="md dash"></span><span class="md dash"></span>
+            <span class="md dot"></span><span class="md dot"></span><span class="md dot"></span>
+          </div>
+          <div class="ptitle"><span class="sos-letter sl-a">S</span><span class="sos-letter sl-b">O</span><span class="sos-letter sl-c">S</span> Ferienquests <span class="xp-badge">76 Quests · XP</span></div>
+          <div class="pdesc">76 fertige Missionen für Kinder von 6 bis 14 Jahren gegen die Ferienlangeweile: einfach ausdrucken und loslegen.</div>
+          <span class="plink">Zu den Quests <span class="arrow">→</span></span>
+        </a>
+      </div>
+      <a href="/family-flow/" class="lane-footlink">Alle Family-Flow-Themen ansehen →</a>
+    </div>
+  </div>
+
+  <!-- LANE: KIDS -->
+  <div class="islane kids" onclick="toggleMobileLane(this)">
+    <div class="is-header">
+      <div class="lane-eyebrow">Für Kinder</div>
+      <img src="/assets/kids-logo-cutout-tight.png" alt="Calijula Kids" class="is-logo">
+      <p class="is-lead">Bilderbücher, die Kindern helfen, sich selbst und ihren Platz in der Familie besser zu verstehen. Liebevoll, einfühlsam, zum Immer-wieder-Vorlesen.</p>
+      <div class="is-explore-hint">Bücher entdecken <span class="down-arrow">↓</span></div>
+    </div>
+    
+    <div class="is-content">
+      <div class="is-cards">
+        <a href="https://www.amazon.de/Warum-hei%C3%9Fe-ich-eigentlich-Hasi/dp/B0H12WZFCS" class="product-card pc-hasi">
+          <div class="ptitle">Warum heiße ich eigentlich Hasi?</div>
+          <div class="pdesc">Teil 1 einer dreiteiligen Reihe: Ein Kuscheltier erzählt seine eigene Geschichte über Spitznamen, Zugehörigkeit und die kleinen Dinge, die eine Familie besonders machen.</div>
+          <span class="plink">Bei Amazon ansehen <span class="arrow">→</span></span>
+        </a>
+      </div>
+      <a href="/kids/" class="lane-footlink">Die ganze Hasi-Reihe ansehen →</a>
+    </div>
+  </div>
+
+</section>
+<!-- END INTERACTIVE SPLIT -->
+
+<section class="story" id="geschichte">
+  <div class="wrap story-grid">
+    <div>
+      <div class="story-label">Meine Geschichte</div>
+      <h2>Warum es <span class="cal">Calijula</span> gibt</h2>
+    </div>
+    <div class="story-text">
+      <p><strong>Angefangen hat alles mit Calijula Kids</strong>, genauer gesagt mit Hasi. Einem Kuscheltier, das seine eigene Geschichte erzählt. Teil 1 ist im Mai erschienen, zwei weitere Teile werden folgen.</p>
+      <p>Mittendrin beschäftigte mich mein eigener Alltag als Mama zunehmend mit einem ganz anderen Thema: der Screentime. Ich fing an, dazu zu recherchieren, und beschloss irgendwann, meine Erkenntnisse in einem Ratgeber festzuhalten. So entstand <strong>Calijula Family Flow</strong>.</p>
+      <p>Und dann kamen die Ferien. Mitten im Schreiben über Bildschirmzeit-Fallen kam mir die Idee zu den <strong>SOS-Ferienquests</strong>: fertigen Missionen gegen die Ferienlangeweile, entwickelt direkt aus meinem eigenen Alltag heraus.</p>
+      <p>Aktuell läuft also alles parallel: Hasi wächst weiter, "Pause vom Screen" steht in den Startlöchern und die SOS-Ferienquests sind bereits live. Drei Projekte, ein Ursprung: mein Wunsch nach mehr echter Familienzeit.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brandmark" style="margin-bottom:14px; display:flex;">
+          <span class="logo-script" style="color:var(--cream);">Calijula</span>
+          <span class="logo-sub" style="color:rgba(251,248,241,0.6);">Verlag</span>
+        </a>
+        <p style="max-width:280px; font-size:14px; line-height:1.6; color:rgba(251,248,241,0.55); margin-top:14px;">
+          Geschichten und Ideen für mehr echte Familienzeit.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Reihen</h4>
+        <ul>
+          <li><a href="/family-flow/">Calijula Family Flow</a></li>
+          <li><a href="/kids/">Calijula Kids</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verlag</h4>
+        <ul>
+          <li><a href="#geschichte">Meine Geschichte</a></li>
+          <li><a href="/impressum/">Impressum</a></li>
+          <li><a href="/datenschutz/">Datenschutz</a></li>
+          <li><a href="mailto:calijula-verlag@web.de">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Calijula Verlag</span>
+      <span>calijula.de</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Für Touch-Geräte (Handy/Tablet), damit der Klick zum Ausklappen funktioniert.
+function toggleMobileLane(element) {
+  if(window.innerWidth <= 960) {
+    // Schließt die andere Lane, falls offen
+    document.querySelectorAll('.islane').forEach(function(lane) {
+      if(lane !== element) lane.classList.remove('mobile-active');
+    });
+    // Öffnet die geklickte Lane
+    element.classList.toggle('mobile-active');
+  }
+}
+</script>
+
+</body>
+</html>

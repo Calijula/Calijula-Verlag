@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calijula Family Flow — Mehr echte Familienzeit</title>
+<title>Calijula Family Flow: Mehr echte Familienzeit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy: #22364B;
@@ -27,7 +27,7 @@
   html{scroll-behavior:smooth;}
   body{font-family:'Work Sans', sans-serif; color:var(--ink); background:var(--sand); -webkit-font-smoothing:antialiased;}
   .display{font-family:'Fraunces', serif;}
-  .cal{font-family:'Alex Brush', cursive; font-weight:400;}
+  .cal{font-family:'Dancing Script', cursive; font-weight:700;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
   a:focus-visible, button:focus-visible{outline:2px solid var(--terracotta); outline-offset:3px;}
@@ -38,7 +38,7 @@
   header{position:sticky; top:0; z-index:50; background:rgba(251,248,241,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(34,54,75,0.08);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px;}
   .brandmark{display:flex; align-items:center; gap:12px;}
-  .logo-script{font-family:'Alex Brush', cursive; font-size:32px; line-height:1; color:var(--navy); position:relative; top:2px;}
+  .logo-script{font-family:'Dancing Script', cursive; font-weight:700; font-size:32px; line-height:1; color:var(--navy); position:relative; top:2px;}
   .logo-sub{font-family:'Work Sans', sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--terracotta-deep); position:relative; top:3px;}
   nav ul{list-style:none; display:flex; gap:34px;}
   nav ul a{font-size:14.5px; font-weight:500; color:var(--navy); position:relative; padding-bottom:3px;}
@@ -67,16 +67,17 @@
 
   /* PRODUCTS */
   .products{padding:56px 0 100px;}
-  .section-label{font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:var(--sage-deep); margin-bottom:14px; text-align:center;}
+  .section-label{font-size:13px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:var(--ff-blue-deep); margin-bottom:14px; text-align:center;}
   .products-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:36px;}
   @media (max-width:780px){ .products-grid{grid-template-columns:1fr;} }
 
-  .pcard{background:var(--cream); border:1px solid rgba(34,54,75,0.08); border-radius:10px; padding:36px 32px; display:flex; flex-direction:column; transition:transform .25s ease, box-shadow .25s ease;}
+  .pcard{background:var(--cream); border:1px solid rgba(46,126,134,0.14); border-radius:10px; padding:36px 32px; display:flex; flex-direction:column; transition:transform .25s ease, box-shadow .25s ease;}
   .pcard:hover{transform:translateY(-4px) rotate(-0.5deg); box-shadow:0 16px 32px rgba(34,54,75,0.1);}
-  .pkicker{display:inline-block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--cream); background:var(--terracotta-deep); padding:4px 11px; border-radius:6px; margin-bottom:16px; transform:rotate(-2deg); box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+  .pkicker{display:inline-flex; align-items:center; gap:7px; font-size:11px; letter-spacing:0.07em; text-transform:uppercase; font-weight:700; color:var(--ff-blue-deep); background:rgba(46,126,134,0.1); padding:6px 13px; border-radius:999px; margin-bottom:18px;}
+  .pkicker::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--ff-teal); flex-shrink:0;}
   .pcard h3{font-family:'Fraunces', serif; font-weight:600; font-size:24px; color:var(--navy); margin-bottom:14px; line-height:1.25;}
   .pcard p{font-size:15px; line-height:1.7; color:#4A4640; margin-bottom:24px; flex-grow:1;}
-  .pcard .plink{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:600; color:var(--sage-deep); align-self:flex-start; border-bottom:1px solid var(--sage-deep); padding-bottom:2px;}
+  .pcard .plink{display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:600; color:var(--ff-blue-deep); align-self:flex-start; border-bottom:1px solid var(--ff-blue-deep); padding-bottom:2px;}
   .pcard .plink .arrow{transition:transform .2s ease;}
   .pcard:hover .plink .arrow{transform:translateX(3px);}
 
@@ -121,7 +122,7 @@
     <img src="/assets/family-flow-logo-cutout-tight.png" alt="Calijula Family Flow Logo" style="width:340px; max-width:80%; height:auto; margin:0 auto 4px; display:block; filter:drop-shadow(0 10px 20px rgba(46,126,134,0.25));">
     <h1 class="sr-only">Calijula Family Flow</h1>
     <div class="eyebrow">Für Eltern</div>
-    <p>Sofort einsetzbare Ideen und Werkzeuge für Familien, die bewusster mit Bildschirmzeit umgehen wollen — ohne Streit, ohne schlechtes Gewissen.</p>
+    <p>Sofort einsetzbare Ideen und Werkzeuge für Familien, die bewusster mit Bildschirmzeit umgehen wollen, ganz ohne Streit oder schlechtes Gewissen.</p>
   </div>
   <svg class="wave" viewBox="0 0 1200 56" preserveAspectRatio="none" height="56">
     <path d="M0,28 C150,56 350,0 600,28 C850,56 1050,0 1200,28 L1200,56 L0,56 Z" fill="var(--sand)"></path>
@@ -130,7 +131,7 @@
 
 <section class="intro-strip">
   <div class="wrap">
-    <p>Entstanden ist Family Flow aus meinem ganz eigenen Alltag — aus der ständigen Frage, wie Bildschirmzeit in der Familie fair geregelt werden kann, ohne dass daraus jeden Tag ein neuer Kampf entsteht. Hier teile ich meine Lösungen mit dir. Aktuell gibt es zwei Angebote, weitere sind bereits in Arbeit.</p>
+    <p>Entstanden ist Family Flow aus meinem ganz eigenen Alltag, aus der ständigen Frage, wie Bildschirmzeit in der Familie fair geregelt werden kann, ohne dass daraus jeden Tag ein neuer Kampf entsteht. Hier teile ich meine Lösungen mit dir. Aktuell gibt es zwei Angebote, weitere sind bereits in Arbeit.</p>
   </div>
 </section>
 
@@ -149,7 +150,7 @@
       <div class="pcard">
         <div class="pkicker">Aktivitäten</div>
         <h3>SOS-Ferienquests</h3>
-        <p>76 fertige Missionen für Kinder von 6 bis 14 Jahren gegen die hartnäckige Ferien-Langeweile. Einfach ausdrucken, verteilen — und die Kinder starten von ganz allein los.</p>
+        <p>76 fertige Missionen für Kinder von 6 bis 14 Jahren gegen die hartnäckige Ferien-Langeweile. Einfach ausdrucken, verteilen, und die Kinder starten von ganz allein los.</p>
         <a href="/family-flow/sos-ferienquests/" class="plink">Zu den Quests <span class="arrow">→</span></a>
       </div>
 
